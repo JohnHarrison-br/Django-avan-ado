@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <title>Clientes</title>
+</head>
+<body>
+  <h1>Lista de Clientes</h1>
+
+  <ul>
+    {% for client in clients %}
+      <li>
+        <strong>Nome:</strong> {{ client.name }} <br>
+        <strong>Email:</strong> {{ client.email }} <br>
+        <strong>Data de nascimento:</strong> {{ client.birth_date }} <br>
+        <strong>Criado em:</strong> {{ client.created_at }} <br>
+        <strong>Atualizado em:</strong> {{ client.updated_at }} <br>
+        <strong>Total de pedidos:</strong> {{ client.total_orders }} <br>
+        <strong>Total gasto:</strong> {{ client.total_spent }} <br>
+
+        {% if client.is_deleted %}
+          <span style="color: red;">Deletado</span>
+        {% else %}
+          <span style="color: green;">Ativo</span>
+        {% endif %}
+      </li>
+      <hr>
+    {% empty %}
+      <li>Nenhum cliente encontrado.</li>
+    {% endfor %}
+  </ul>
+
+</body>
+
+
+</html>
